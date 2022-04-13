@@ -2,7 +2,7 @@
 #include "list.h"
 
 int main(int argC, char *argV[]) {
-  struct elem * node = NULL;
+  struct elem *node = NULL;
   int i;
 
   if (argC == 1)

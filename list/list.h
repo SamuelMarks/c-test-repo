@@ -22,7 +22,8 @@ extern C_TEST_REPO_LIST_EXPORT struct elem *append(struct elem *, long);
 
 extern C_TEST_REPO_LIST_EXPORT struct elem *addToList(struct elem *, long);
 
-extern C_TEST_REPO_LIST_EXPORT struct elem *deleteFromList(struct elem *, size_t);
+extern C_TEST_REPO_LIST_EXPORT struct elem *deleteFromList(struct elem *,
+                                                           size_t);
 
 extern C_TEST_REPO_LIST_EXPORT void printList(struct elem *);
 

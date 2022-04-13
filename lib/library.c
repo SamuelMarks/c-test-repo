@@ -5,6 +5,11 @@
 
 #include "library.h"
 
+/* for `vsprintf_s` */
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS 1
+#endif /* _MSC_VER */
+
 char *dstr(char **unto, const char *fmt, ...) {
   va_list args;
   size_t base_length = unto && *unto ? strlen(*unto) : 0;

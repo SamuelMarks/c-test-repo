@@ -7,7 +7,8 @@ struct elem *append(struct elem *root, long num) {
   while (*insert)
     insert = &insert[0]->next;
   *insert = malloc(sizeof **insert);
-  if (!*insert) exit(ENOMEM);
+  if (!*insert)
+    exit(ENOMEM);
   insert[0]->next = NULL;
   insert[0]->data = num;
   return root;
@@ -42,8 +43,6 @@ void printList(struct elem *node) {
   struct elem *iter;
   puts("List contains following elements : \n");
 
-  for (iter = node; iter != NULL; iter = iter->next) {
+  for (iter = node; iter != NULL; iter = iter->next)
     printf("%ld ", iter->data);
-    // access data, e.g. with iter->data
-  }
 }
