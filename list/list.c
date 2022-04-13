@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <sys/errno.h>
 
 #include "list.h"
 

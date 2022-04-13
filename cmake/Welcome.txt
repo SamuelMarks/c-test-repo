@@ -1,1 +1,1 @@
-This installs type-correct.
+This installs c_test_repo.
