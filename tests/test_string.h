@@ -5,6 +5,11 @@
 
 #include <greatest.h>
 
+#if defined(_WIN32) || defined(__WIN32__) || defined(__WINDOWS__)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#endif /* defined(_WIN32) || defined(__WIN32__) || defined(__WINDOWS__) */
+
 #include <stdio.h>
 #define BUFSIZE 9
 
@@ -12,10 +17,10 @@ void init_buf(char *buf, size_t size);
 void print_buf(char *buf);
 
 void init_buf(char *buf, size_t size) {
-  char i;
-  for (i = '\0'; (int)i < size; i++) {
-    buf[(int)i] = i;
-  }
+  size_t i;
+  char c;
+  for (i=0, c = '\0'; i < size; i++, c++)
+    buf[i] = c;
 }
 
 void print_buf(char *buf) {
@@ -23,14 +28,12 @@ void print_buf(char *buf) {
   char c;
   for (i = 0; i < BUFSIZE; i++) {
     c = buf[i];
-    if (c == '\0') {
+    if (c == '\0')
       printf("\\0");
-
-    } else {
-      printf("%c", buf[i]);
-    }
+    else
+      putchar(buf[i]);
   }
-  printf("\n");
+  putchar('\n');
 }
 
 TEST x_string_should_be(void) {
@@ -57,3 +60,5 @@ TEST x_string_should_be(void) {
 
 /* Suites can group multiple tests with common setup. */
 SUITE(string_suite) { RUN_TEST(x_string_should_be); }
+
+#undef BUFSIZE

@@ -18,6 +18,10 @@ target_include_directories(
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
+if (MSVC)
+    target_compile_definitions("${LIBRARY_NAME}" PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif (MSVC)
+
 #=========#
 # Install #
 #=========#
